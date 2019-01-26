@@ -6,7 +6,7 @@
 #include "sqlite3.h"
 #include "db_klasa.h"
 using namespace std;
-class admin
+class admin : public db_klasa
 {
 public:
 	admin();
@@ -76,6 +76,33 @@ public:
 		
 		return sprawdz;
 	}
+	static int powtorzenie_callback(void *nie_uzywane, int ile, char **data, char **kolumny) {
+		int i = 0;
+		for (i = 0; i < ile; i++)
+		{
+			//cout << kolumny[i] << " = " << data[i] << endl;
+		}
+		if (i > 0) return 1;
+		else return 0;
+	}
+	static int wypisz_callback(void *nie_uzywane, int ile, char **data, char **kolumny) {
+		int i = 0;
+		for (i = 0; i < ile; i++)
+		{
+			cout << kolumny[i] << " = " << data[i] << endl;
+		}
+		if (i > 0) return 1;
+		else return 0;
+	}
+	string male_litery(string tekst)
+	{
+		int ascii;
+		for (int i = 0; i < tekst.length(); i++)
+		{
+			if (tekst[i] <= 90 && tekst[i] >= 65) tekst[i] += 32;
+		}
+		return tekst;
+	}
 	void dodaj()
 	{
 		string elem[11];
@@ -116,11 +143,104 @@ public:
 		cout << "podaj login uzytkownika, spacje nie dozwolone: ";
 		getline(cin, elem[9]);
 		getline(cin, elem[9]);
-		elem[9] = this->poprawnosc_login(elem[9], elem[4]);
+		elem[9] = this->poprawnosc_login(elem[9], elem[4]); 
+		string pytanie = "SELECT * FROM konta WHERE login = '";
+		pytanie += elem[9];
+		pytanie += "'";
+		const char *select = pytanie.c_str();
+		sqlite3_open("bd_kwiaciarnia.db", &db);
+		int zajete = sqlite3_exec(db, select, powtorzenie_callback, NULL, NULL);
+		sqlite3_close(db);
+		while (zajete == 4)
+		{
+			cout << "podany login jest juz zajety, wprowadz login jeszcze raz: " << endl;
+			getline(cin, elem[9]);
+			//getline(cin, elem[9]);
+			elem[9] = this->poprawnosc_login(elem[9], elem[4]);
+			pytanie = "SELECT * FROM konta WHERE login = '";
+			pytanie += elem[9];
+			pytanie += "'";
+			select = pytanie.c_str();
+			sqlite3_open("bd_kwiaciarnia.db", &db);
+			zajete = sqlite3_exec(db, select, powtorzenie_callback, NULL, NULL);
+			sqlite3_close(db);
+		}
 		elem[10] = "nowe";
 		int length = sizeof(elem) / sizeof(string);
 		db_klasa dodaj_uzytkownik = db_klasa();
 		dodaj_uzytkownik.dodaj(elem, length);
+	}
+	void zmien()
+	{
+		string elem[3], ID;
+		elem[0] = "kwiaty";
+		elem[1] = "sztuk";
+		cout << "podaj id kwiatka: ";
+		cin >> ID;
+		string pytanie = "SELECT * FROM kwiaty WHERE id = ";
+		pytanie += ID;
+		const char *select = pytanie.c_str();
+		system("cls");
+		sqlite3_open("bd_kwiaciarnia.db", &db);
+		int istnieje = sqlite3_exec(db, select, wypisz_callback, NULL, NULL);
+		sqlite3_close(db);
+		while(istnieje == 0)
+		{
+			cout << "nie istnieje podany kwiatek w bazie danych, wpisz id jeszcze raz: ";
+			cin >> ID;
+			pytanie = "SELECT * FROM kwiaty WHERE id = ";
+			pytanie += ID;
+			select = pytanie.c_str();
+			system("cls");
+			sqlite3_open("bd_kwiaciarnia.db", &db);
+			istnieje = sqlite3_exec(db, select, wypisz_callback, NULL, NULL);
+			sqlite3_close(db);
+		}
+		cout << "podaj ilosc sztuk kwiatka: ";
+		cin >> elem[2];
+		elem[2] = this->poprawnosc_liczba(elem[2], elem[1]);
+		int length = sizeof(elem) / sizeof(string);
+		db_klasa zmien_kwiaty = db_klasa();
+		zmien_kwiaty.aktualizuj(elem, length, ID);
+	}
+	void dodaj_kwiat()
+	{
+		string elem[5];
+		elem[0] = "kwiaty";
+		elem[1] = "nazwa";
+		elem[2] = "sztuk";
+		cout << "podaj nazwe kwiatka: ";
+		getline(cin, elem[3]);
+		getline(cin, elem[3]);
+		elem[3] = male_litery(elem[3]);
+		string pytanie = "SELECT * FROM kwiaty WHERE nazwa = '";
+		pytanie += elem[3];
+		pytanie += "'";
+		const char *select = pytanie.c_str();
+		//system("cls");
+		sqlite3_open("bd_kwiaciarnia.db", &db);
+		int istnieje = sqlite3_exec(db, select, wypisz_callback, NULL, NULL);
+		sqlite3_close(db);
+		while (istnieje == 4)
+		{
+			cout << "istnieje juz kwiat o takiej nazwie, wpisz ponownie nazwe: ";
+			getline(cin, elem[3]);
+			elem[3] = male_litery(elem[3]);
+			pytanie = "SELECT * FROM kwiaty WHERE nazwa = '";
+			pytanie += elem[3];
+			pytanie += "'";
+			select = pytanie.c_str();
+			system("cls");
+			sqlite3_open("bd_kwiaciarnia.db", &db);
+			istnieje = sqlite3_exec(db, select, wypisz_callback, NULL, NULL);
+			sqlite3_close(db);
+		}
+		cout << "podaj ilosc sztuk dostepnych do sprzedazy: ";
+		cin >> elem[4];
+		elem[4] = this->poprawnosc_liczba(elem[4], elem[2]);
+		int length = sizeof(elem) / sizeof(string);
+		db_klasa dodaj_kwiat = db_klasa();
+		dodaj_kwiat.dodaj(elem, length);
 	}
 };
 
