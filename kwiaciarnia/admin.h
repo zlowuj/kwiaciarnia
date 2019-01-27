@@ -9,6 +9,7 @@ using namespace std;
 class admin : public db_klasa
 {
 public:
+	static string kwiat;
 	admin();
 	~admin();
 	string poprawnosc_liczba(string sprawdz, string nazwa)
@@ -76,10 +77,12 @@ public:
 		
 		return sprawdz;
 	}
+	
 	static int powtorzenie_callback(void *nie_uzywane, int ile, char **data, char **kolumny) {
 		int i = 0;
 		for (i = 0; i < ile; i++)
 		{
+			
 			//cout << kolumny[i] << " = " << data[i] << endl;
 		}
 		if (i > 0) return 1;
@@ -205,16 +208,17 @@ public:
 	}
 	void dodaj_kwiat()
 	{
-		string elem[5];
+		string elem[7];
 		elem[0] = "kwiaty";
 		elem[1] = "nazwa";
 		elem[2] = "sztuk";
+		elem[3] = "cena";
 		cout << "podaj nazwe kwiatka: ";
-		getline(cin, elem[3]);
-		getline(cin, elem[3]);
-		elem[3] = male_litery(elem[3]);
+		getline(cin, elem[4]);
+		getline(cin, elem[4]);
+		elem[4] = male_litery(elem[4]);
 		string pytanie = "SELECT * FROM kwiaty WHERE nazwa = '";
-		pytanie += elem[3];
+		pytanie += elem[4];
 		pytanie += "'";
 		const char *select = pytanie.c_str();
 		//system("cls");
@@ -224,10 +228,10 @@ public:
 		while (istnieje == 4)
 		{
 			cout << "istnieje juz kwiat o takiej nazwie, wpisz ponownie nazwe: ";
-			getline(cin, elem[3]);
-			elem[3] = male_litery(elem[3]);
+			getline(cin, elem[4]);
+			elem[4] = male_litery(elem[4]);
 			pytanie = "SELECT * FROM kwiaty WHERE nazwa = '";
-			pytanie += elem[3];
+			pytanie += elem[4];
 			pytanie += "'";
 			select = pytanie.c_str();
 			system("cls");
@@ -236,8 +240,11 @@ public:
 			sqlite3_close(db);
 		}
 		cout << "podaj ilosc sztuk dostepnych do sprzedazy: ";
-		cin >> elem[4];
-		elem[4] = this->poprawnosc_liczba(elem[4], elem[2]);
+		cin >> elem[5];
+		elem[5] = this->poprawnosc_liczba(elem[5], elem[2]);
+		cout << "podaj cene za sztuke: ";
+		cin >> elem[6];
+		elem[6] = this->poprawnosc_liczba(elem[6], elem[3]);
 		int length = sizeof(elem) / sizeof(string);
 		db_klasa dodaj_kwiat = db_klasa();
 		dodaj_kwiat.dodaj(elem, length);

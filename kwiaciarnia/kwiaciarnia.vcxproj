@@ -149,12 +149,14 @@
   <ItemGroup>
     <ClInclude Include="admin.h" />
     <ClInclude Include="db_klasa.h" />
+    <ClInclude Include="klient.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="admin.cpp" />
     <ClCompile Include="db_klasa.cpp" />
+    <ClCompile Include="klient.cpp" />
     <ClCompile Include="kwiaciarnia.cpp" />
     <ClCompile Include="sqlite3.c">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
