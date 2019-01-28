@@ -19,12 +19,12 @@ c:\users\dzidaz\desktop\kwiaciarnia\kwiaciarnia\kwiaciarnia.cpp(29): warning C40
 c:\users\dzidaz\desktop\kwiaciarnia\kwiaciarnia\kwiaciarnia.cpp(31): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
 c:\users\dzidaz\desktop\kwiaciarnia\kwiaciarnia\kwiaciarnia.cpp(110): warning C4018: '<': signed/unsigned mismatch
 c:\users\dzidaz\desktop\kwiaciarnia\kwiaciarnia\kwiaciarnia.cpp(122): warning C4018: '<': signed/unsigned mismatch
-c:\users\dzidaz\desktop\kwiaciarnia\kwiaciarnia\kwiaciarnia.cpp(136): warning C4018: '<': signed/unsigned mismatch
-c:\users\dzidaz\desktop\kwiaciarnia\kwiaciarnia\kwiaciarnia.cpp(144): warning C4018: '<': signed/unsigned mismatch
-c:\users\dzidaz\desktop\kwiaciarnia\kwiaciarnia\kwiaciarnia.cpp(163): warning C4018: '<': signed/unsigned mismatch
-c:\users\dzidaz\desktop\kwiaciarnia\kwiaciarnia\kwiaciarnia.cpp(178): warning C4018: '<': signed/unsigned mismatch
-c:\users\dzidaz\desktop\kwiaciarnia\kwiaciarnia\kwiaciarnia.cpp(195): warning C4018: '<': signed/unsigned mismatch
-c:\users\dzidaz\desktop\kwiaciarnia\kwiaciarnia\kwiaciarnia.cpp(209): warning C4018: '<': signed/unsigned mismatch
-c:\users\dzidaz\desktop\kwiaciarnia\kwiaciarnia\kwiaciarnia.cpp(243): warning C4018: '<': signed/unsigned mismatch
-c:\users\dzidaz\desktop\kwiaciarnia\kwiaciarnia\kwiaciarnia.cpp(266): warning C4101: 'znak': unreferenced local variable
+c:\users\dzidaz\desktop\kwiaciarnia\kwiaciarnia\kwiaciarnia.cpp(137): warning C4018: '<': signed/unsigned mismatch
+c:\users\dzidaz\desktop\kwiaciarnia\kwiaciarnia\kwiaciarnia.cpp(145): warning C4018: '<': signed/unsigned mismatch
+c:\users\dzidaz\desktop\kwiaciarnia\kwiaciarnia\kwiaciarnia.cpp(164): warning C4018: '<': signed/unsigned mismatch
+c:\users\dzidaz\desktop\kwiaciarnia\kwiaciarnia\kwiaciarnia.cpp(179): warning C4018: '<': signed/unsigned mismatch
+c:\users\dzidaz\desktop\kwiaciarnia\kwiaciarnia\kwiaciarnia.cpp(196): warning C4018: '<': signed/unsigned mismatch
+c:\users\dzidaz\desktop\kwiaciarnia\kwiaciarnia\kwiaciarnia.cpp(210): warning C4018: '<': signed/unsigned mismatch
+c:\users\dzidaz\desktop\kwiaciarnia\kwiaciarnia\kwiaciarnia.cpp(244): warning C4018: '<': signed/unsigned mismatch
+c:\users\dzidaz\desktop\kwiaciarnia\kwiaciarnia\kwiaciarnia.cpp(267): warning C4101: 'znak': unreferenced local variable
   kwiaciarnia.vcxproj -> C:\Users\dzidaz\Desktop\kwiaciarnia\Debug\kwiaciarnia.exe
