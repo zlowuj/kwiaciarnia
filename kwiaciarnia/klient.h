@@ -74,6 +74,7 @@ public:
 		cin >> elem[7];
 		elem[7] = this->poprawnosc_liczba(elem[7], elem[3]);
 		int razem = string_na_int(cena)*string_na_int(elem[7]);
+		
 		//cout << "RAZEM = " << razem << endl;
 		int czy_zero = 0;
 		char cyfra = (razem / 1000) + 48;

@@ -1,4 +1,11 @@
-﻿  kwiaciarnia.cpp
+﻿  klient.cpp
+c:\users\dzidaz\desktop\kwiaciarnia\kwiaciarnia\db_klasa.h(14): warning C4018: '<': signed/unsigned mismatch
+c:\users\dzidaz\desktop\kwiaciarnia\kwiaciarnia\klient.h(35): warning C4018: '<': signed/unsigned mismatch
+c:\users\dzidaz\desktop\kwiaciarnia\kwiaciarnia\klient.h(45): warning C4018: '<': signed/unsigned mismatch
+c:\users\dzidaz\desktop\kwiaciarnia\kwiaciarnia\klient.h(56): warning C4018: '<': signed/unsigned mismatch
+c:\users\dzidaz\desktop\kwiaciarnia\kwiaciarnia\klient.h(58): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+c:\users\dzidaz\desktop\kwiaciarnia\kwiaciarnia\klient.h(64): warning C4101: 'wybor': unreferenced local variable
+  kwiaciarnia.cpp
 c:\users\dzidaz\desktop\kwiaciarnia\kwiaciarnia\db_klasa.h(14): warning C4018: '<': signed/unsigned mismatch
 c:\users\dzidaz\desktop\kwiaciarnia\kwiaciarnia\admin.h(18): warning C4018: '<': signed/unsigned mismatch
 c:\users\dzidaz\desktop\kwiaciarnia\kwiaciarnia\admin.h(28): warning C4018: '<': signed/unsigned mismatch
@@ -27,4 +34,5 @@ c:\users\dzidaz\desktop\kwiaciarnia\kwiaciarnia\kwiaciarnia.cpp(196): warning C4
 c:\users\dzidaz\desktop\kwiaciarnia\kwiaciarnia\kwiaciarnia.cpp(210): warning C4018: '<': signed/unsigned mismatch
 c:\users\dzidaz\desktop\kwiaciarnia\kwiaciarnia\kwiaciarnia.cpp(244): warning C4018: '<': signed/unsigned mismatch
 c:\users\dzidaz\desktop\kwiaciarnia\kwiaciarnia\kwiaciarnia.cpp(267): warning C4101: 'znak': unreferenced local variable
+  Generating Code...
   kwiaciarnia.vcxproj -> C:\Users\dzidaz\Desktop\kwiaciarnia\Debug\kwiaciarnia.exe
